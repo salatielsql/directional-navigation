@@ -1,0 +1,44 @@
+body {
+  font-family: monospace;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+*:focus,
+.focus {
+  outline: 2px blue solid;
+  outline-offset: 2px;
+}
+
+.btn {
+  background-color: lightblue;
+  padding: 12px;
+  color: cornflowerblue;
+}
+
+.horizontal-list {
+  overflow-x: scroll;
+  width: 700px;
+  white-space: nowrap;
+  padding: 8px;
+}
+
+.card {
+  height: 150px;
+  width: 100px;
+  background-color: lightgray;
+  color: gray;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding: 16px;
+  background-color: honeydew;
+  margin: 16px;
+}

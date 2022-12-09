@@ -1,5 +1,7 @@
 # Directional Navigation ⬆️➡️⬇️⬅️
 
+(WIP) Spatial navigation focused on directional sections built with Typescript
+
 ### Runing the demo
 
 1. Clone the repo

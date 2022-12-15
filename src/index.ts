@@ -4,6 +4,7 @@ import {
   listenFocusEvent,
   removeFocusEvent,
 } from "./event-listeners";
+import { dispatchDestroyEvent, dispatchInitEvent } from "./events";
 
 import {
   focusInitialElement,
@@ -11,17 +12,19 @@ import {
 } from "./initializations";
 
 function init() {
-  console.log("evt:init!");
   listenFocusEvent();
   listenKeyboardEvents();
   initManagedDirectionalSection();
   focusInitialElement();
+
+  dispatchInitEvent();
 }
 
 function destroy() {
-  console.log("evt:destroy!");
   removeFocusEvent();
   removeKeyboardEvents();
+
+  dispatchDestroyEvent();
 }
 
 const DirectionalNavigation = {

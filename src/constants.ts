@@ -18,3 +18,5 @@ export const LEAVE_SECTION_DIRECTION_ATTR = "data-leave-{direction}";
 export const LAST_COLUMN_PRODUCT_RESULT = 0;
 
 export const FIRST_COLUMN_PRODUCT_RESULT = 1;
+
+export const CHILDREN_INDEX_ATTR = "data-chidlren-index";

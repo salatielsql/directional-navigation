@@ -1,6 +1,5 @@
 import {
-  FIRST_COLUMN_PRODUCT_RESULT,
-  LAST_COLUMN_PRODUCT_RESULT,
+  CHILDREN_INDEX_ATTR,
   LEAVE_SECTION_DIRECTION_ATTR,
   PARENT_SECTION_ATTR,
   SECTION_CURRENT_FOCUSED_CHILDREN_ATTR,
@@ -8,7 +7,8 @@ import {
   SECTION_GRID_ROW_ATTR,
   SECTION_ID_ATTR,
 } from "./constants";
-import { all, qs } from "./dom";
+
+import { all, getParentSectionId, qs } from "./dom";
 import { handleFocusElement } from "./nagivation";
 import { Directions, SectionDirections } from "./types";
 import { getGridFocusPositions, isGridAttrValid } from "./utils";
@@ -16,7 +16,7 @@ import { getGridFocusPositions, isGridAttrValid } from "./utils";
 export class ManagedDirectionalSection {
   sectionId: string;
   $sectionEl: HTMLElement;
-  chidlrens: NodeList;
+  chidlren: NodeList;
   currentFocusedChildrenIndex: number;
   direction: SectionDirections;
   gridRows?: number;
@@ -35,7 +35,7 @@ export class ManagedDirectionalSection {
 
     this.$sectionEl = $sectionEl;
 
-    this.chidlrens = all(`[${PARENT_SECTION_ATTR}='${sectionId}']`);
+    this.chidlren = ManagedDirectionalSection.getChildren(sectionId);
 
     const childrenIndex = $sectionEl.getAttribute(
       SECTION_CURRENT_FOCUSED_CHILDREN_ATTR
@@ -65,6 +65,36 @@ export class ManagedDirectionalSection {
     }
   }
 
+  static getElementSection($el: HTMLElement) {
+    const parentSectionId = getParentSectionId($el);
+
+    if (!parentSectionId) return null;
+
+    const section = getSection(parentSectionId);
+
+    if (!section) return null;
+
+    return section;
+  }
+
+  static getChildren(sectionId: string) {
+    const getChildrenList = () =>
+      all(`[${PARENT_SECTION_ATTR}='${sectionId}']`);
+
+    getChildrenList().forEach((node, index) => {
+      const children = node as HTMLElement;
+      children.setAttribute(CHILDREN_INDEX_ATTR, String(index));
+    });
+
+    return getChildrenList();
+  }
+
+  static getElementChildrenIndex($el: HTMLElement) {
+    const indexAttr = $el.getAttribute(CHILDREN_INDEX_ATTR);
+
+    return indexAttr ? Number(indexAttr) : null;
+  }
+
   setCurrentFocusedChildrenIndex(index: number) {
     this.$sectionEl.setAttribute(
       SECTION_CURRENT_FOCUSED_CHILDREN_ATTR,
@@ -75,12 +105,9 @@ export class ManagedDirectionalSection {
   }
 
   leaveSection(direction: Directions) {
-    console.log(`leave ${direction}`);
     const leaveToSelector = this.$sectionEl.getAttribute(
       `${LEAVE_SECTION_DIRECTION_ATTR.replace("{direction}", direction)}`
     );
-
-    console.log(leaveToSelector);
 
     if (!leaveToSelector) return;
 
@@ -134,7 +161,6 @@ export class ManagedDirectionalSection {
 
   focusFromKeyPressed(keyPressed: Directions) {
     if (this.direction === "grid") {
-      console.log(this.chidlrens.item(this.currentFocusedChildrenIndex));
       this.handleGridFocus(keyPressed);
     }
 
@@ -167,7 +193,7 @@ export class ManagedDirectionalSection {
     const previousFocusIndex = this.currentFocusedChildrenIndex - 1;
 
     if (previousFocusIndex >= 0) {
-      const previousFocusElement = this.chidlrens.item(
+      const previousFocusElement = this.chidlren.item(
         previousFocusIndex
       ) as HTMLElement | null;
 
@@ -190,8 +216,8 @@ export class ManagedDirectionalSection {
   focusNext() {
     const nextFocusIndex = this.currentFocusedChildrenIndex + 1;
 
-    if (nextFocusIndex <= this.chidlrens.length) {
-      const nextFocusElement = this.chidlrens.item(
+    if (nextFocusIndex <= this.chidlren.length) {
+      const nextFocusElement = this.chidlren.item(
         nextFocusIndex
       ) as HTMLElement | null;
 
@@ -212,7 +238,7 @@ export class ManagedDirectionalSection {
   }
 
   focusIndex(index: number) {
-    const focusCandidate = this.chidlrens.item(index) as HTMLElement | null;
+    const focusCandidate = this.chidlren.item(index) as HTMLElement | null;
 
     if (focusCandidate) {
       handleFocusElement(focusCandidate);
@@ -221,11 +247,10 @@ export class ManagedDirectionalSection {
   }
 
   focusLastFocusedElement() {
-    console.log(this.chidlrens, this.currentFocusedChildrenIndex);
-    const lastCurrentFocusedElement = this.chidlrens.item(
+    const lastCurrentFocusedElement = this.chidlren.item(
       this.currentFocusedChildrenIndex
     ) as HTMLElement | null;
-    console.log(lastCurrentFocusedElement);
+
     if (!lastCurrentFocusedElement) return;
 
     handleFocusElement(lastCurrentFocusedElement);

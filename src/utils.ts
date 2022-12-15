@@ -44,15 +44,6 @@ export function getGridFocusPositions({
   const isFocusInLastRow =
     gridIndex <= lastIndex && gridIndex > lastIndexInSecondLastRow;
 
-  console.log({ lastIndex, lastIndexInSecondLastRow });
-
-  console.log(gridIndex, rows);
-  console.log({
-    isFocusInFirstColumn,
-    isFocusInLastColumn,
-    isFocusInFirstRow,
-    isFocusInLastRow,
-  });
   return {
     isFocusInFirstColumn,
     isFocusInLastColumn,

@@ -1,6 +1,6 @@
 import { SECTION_ID_ATTR } from "./constants";
 
-import { getSection } from "./sections";
+import { getSection, ManagedDirectionalSection } from "./sections";
 
 import { Directions, KeyCodes } from "./types";
 
@@ -8,7 +8,6 @@ import {
   focusElement,
   getFocusedElement,
   getNextElementFromDirection,
-  getParentSectionId,
 } from "./dom";
 import { dispatchFocusEvent } from "./events";
 
@@ -21,6 +20,13 @@ export function handleFocusElement($el?: HTMLElement | null) {
 
   focusElement($el);
 
+  const section = ManagedDirectionalSection.getElementSection($el);
+  const childrenIndex = ManagedDirectionalSection.getElementChildrenIndex($el);
+
+  if (section && childrenIndex) {
+    section.setCurrentFocusedChildrenIndex(childrenIndex);
+  }
+
   dispatchFocusEvent($el);
 }
 
@@ -28,13 +34,9 @@ function handleKeyboardNavigation(
   keyPressed: Directions,
   $focusedEl: HTMLElement
 ) {
-  const parentSectionId = getParentSectionId($focusedEl);
+  const section = ManagedDirectionalSection.getElementSection($focusedEl);
 
-  if (parentSectionId) {
-    const section = getSection(parentSectionId);
-
-    if (!section) return;
-
+  if (section) {
     return section.focusFromKeyPressed(keyPressed);
   }
 
@@ -68,7 +70,6 @@ export function handleKeyupEvent(event: KeyboardEvent) {
       break;
 
     default:
-      console.log("unhandle-key-event", event);
       return;
   }
 

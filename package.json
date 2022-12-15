@@ -1,13 +1,14 @@
 {
   "name": "directional-navigation",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "",
   "outputFormat": "commonjs",
   "types": "build/types.d.ts",
   "main": "build/index.js",
   "scripts": {
     "dev": "parcel demo.html --open",
-    "build": "parcel build src/index.ts --dist-dir build"
+    "build": "parcel build src/index.ts --dist-dir build",
+    "publish": "npm run build && npm publish"
   },
   "keywords": [],
   "author": "",

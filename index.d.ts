@@ -4,6 +4,6 @@ export {};
 
 declare global {
   interface Window {
-    __sections__?: { [key: string]: ManagedDirectionalSection };
+    __dn_sections__?: { [key: string]: ManagedDirectionalSection };
   }
 }

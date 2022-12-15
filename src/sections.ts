@@ -258,9 +258,9 @@ export class ManagedDirectionalSection {
 }
 
 export function getSection(sectionId: string) {
-  if (!window.__sections__) return;
+  if (!window.__dn_sections__) return;
 
-  const section = window.__sections__[sectionId] as
+  const section = window.__dn_sections__[sectionId] as
     | ManagedDirectionalSection
     | undefined;
 

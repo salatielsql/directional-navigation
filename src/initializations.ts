@@ -34,5 +34,5 @@ export function initManagedDirectionalSection() {
     };
   }, {});
 
-  window.__sections__ = sections;
+  window.__dn_sections__ = sections;
 }

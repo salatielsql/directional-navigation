@@ -1,9 +1,12 @@
 {
   "hooks": {
-    "after:bump": "npm run build"
+    "before:init": "npm run build"
   },
   "git": {
     "commit": true,
+    "commitMessage": "chore: release ${version}"
+  },
+  "github": {
     "commitMessage": "chore: release ${version}"
   },
   "npm": {

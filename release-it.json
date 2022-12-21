@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "after:bump": "npm run build"
+  },
+  "git": {
+    "commit": true,
+    "commitMessage": "chore: release ${version}"
+  },
+  "npm": {
+    "publish": true
+  }
+}

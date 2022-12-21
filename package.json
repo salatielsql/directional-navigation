@@ -1,6 +1,6 @@
 {
   "name": "directional-navigation",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "",
   "outputFormat": "commonjs",
   "types": "build/types.d.ts",

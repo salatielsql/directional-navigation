@@ -8,7 +8,7 @@ import {
   focusInitialElement,
   initManagedDirectionalSection,
 } from "./initializations";
-import { handleFocusElement } from "./nagivation";
+import { handleFocusElement as focus } from "./nagivation";
 import { dispatchDestroyEvent, dispatchInitEvent } from "./events";
 
 function init() {
@@ -30,7 +30,7 @@ function destroy() {
 const DirectionalNavigation = {
   init,
   destroy,
-  focus: handleFocusElement,
+  focus,
 };
 
 export default DirectionalNavigation;

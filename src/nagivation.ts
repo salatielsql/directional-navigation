@@ -1,6 +1,6 @@
-import { SECTION_ID_ATTR } from "./constants";
+import { LIB_NAME, SECTION_ID_ATTR } from "./constants";
 
-import { getSection, ManagedDirectionalSection } from "./sections";
+import { getSection, ManagedDirectionalSection as Section } from "./sections";
 
 import { Directions, KeyCodes } from "./types";
 
@@ -13,18 +13,16 @@ import { dispatchFocusEvent } from "./events";
 
 export function handleFocusElement($el?: HTMLElement | null) {
   if (!$el)
-    return console.error(
-      "[handleFocusElement]: unable to handle navigation focus",
-      $el
+    throw new Error(
+      `[${LIB_NAME}]: Can't perform focus on ${$el}. Focus function expects HTMLElement.`
     );
 
   focusElement($el);
 
-  const section = ManagedDirectionalSection.getElementSection($el);
-  const childrenIndex = ManagedDirectionalSection.getElementChildrenIndex($el);
+  const section = Section.getElementSection($el);
 
-  if (section && childrenIndex) {
-    section.setCurrentFocusedChildrenIndex(childrenIndex);
+  if (section) {
+    section.focusChildren($el);
   }
 
   dispatchFocusEvent($el);
@@ -34,7 +32,7 @@ function handleKeyboardNavigation(
   keyPressed: Directions,
   $focusedEl: HTMLElement
 ) {
-  const section = ManagedDirectionalSection.getElementSection($focusedEl);
+  const section = Section.getElementSection($focusedEl);
 
   if (section) {
     return section.focusFromKeyPressed(keyPressed);

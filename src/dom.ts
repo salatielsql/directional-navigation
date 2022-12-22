@@ -21,31 +21,6 @@ export function getFocusedElement() {
   return document.activeElement as HTMLElement | null;
 }
 
-export function getNextElementSubiling($el?: HTMLElement | null) {
-  if (!$el) {
-    console.error(
-      "[getNextElementSubiling]: unable to get next subiling of $el",
-      $el
-    );
-    return null;
-  }
-
-  return $el.nextElementSibling;
-}
-
-export function getPreviousElementSubiling($el?: HTMLElement | null) {
-  if (!$el) {
-    console.error(
-      "[getPreviousElementSubiling]: unable to get previous subiling of $el",
-      $el
-    );
-
-    return null;
-  }
-
-  return $el.previousElementSibling;
-}
-
 export function getParentSectionId($el: Element) {
   return $el.getAttribute(PARENT_SECTION_ATTR);
 }

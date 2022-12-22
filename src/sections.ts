@@ -81,18 +81,7 @@ export class ManagedDirectionalSection {
     const getChildrenList = () =>
       all(`[${PARENT_SECTION_ATTR}='${sectionId}']`);
 
-    getChildrenList().forEach((node, index) => {
-      const children = node as HTMLElement;
-      children.setAttribute(CHILDREN_INDEX_ATTR, String(index));
-    });
-
     return getChildrenList();
-  }
-
-  static getElementChildrenIndex($el: HTMLElement) {
-    const indexAttr = $el.getAttribute(CHILDREN_INDEX_ATTR);
-
-    return indexAttr ? Number(indexAttr) : null;
   }
 
   setCurrentFocusedChildrenIndex(index: number) {
@@ -102,6 +91,14 @@ export class ManagedDirectionalSection {
     );
 
     this.currentFocusedChildrenIndex = index;
+  }
+
+  focusChildren($el: HTMLElement) {
+    const nextChildrenFocus = Array.prototype.indexOf.call(this.chidlren, $el);
+
+    if (nextChildrenFocus > 0) {
+      this.setCurrentFocusedChildrenIndex(nextChildrenFocus);
+    }
   }
 
   leaveSection(direction: Directions) {

@@ -1,3 +1,5 @@
+export const LIB_NAME = "Directional Navigation";
+
 export const SECTION_ID_ATTR = "data-section-id";
 
 export const SECTION_DIRECTION_ATTR = "data-section-direction";

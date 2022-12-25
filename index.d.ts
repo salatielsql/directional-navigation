@@ -1,9 +1,9 @@
-import { ManagedDirectionalSection } from "./src/sections";
+import { ManagedDirectionalSection } from './src/lib/sections'
 
-export {};
+export {}
 
 declare global {
   interface Window {
-    __dn_sections__?: { [key: string]: ManagedDirectionalSection };
+    __dn_sections__?: { [key: string]: ManagedDirectionalSection }
   }
 }

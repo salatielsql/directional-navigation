@@ -7,10 +7,11 @@ import { Directions } from '../lib/types'
 
 beforeAll(() => {
   // prettier-ignore
-  const html = pug.render(`
-    button#clickme.btns(data-testid='clickme', ${DIRECTION_NAVIGATE_ATTR.replace('{direction}', 'down')}='#clickme2') Click me
-    button#clickme2.btns(data-testid='clickme2', ${DIRECTION_NAVIGATE_ATTR.replace('{direction}', 'up')}='#clickme', ${PARENT_SECTION_ATTR}='test') Click me 2
-  `)
+  const html = pug.render(
+`
+button#clickme.btns(data-testid='clickme', ${DIRECTION_NAVIGATE_ATTR.replace('{direction}', 'down')}='#clickme2') Click me
+button#clickme2.btns(data-testid='clickme2', ${DIRECTION_NAVIGATE_ATTR.replace('{direction}', 'up')}='#clickme', ${PARENT_SECTION_ATTR}='test') Click me 2
+`)
 
   document.body.innerHTML = html
 })

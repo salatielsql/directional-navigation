@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`grid functions should match snapshot passing index: 0,  1`] = `
+{
+  "isFocusInFirstColumn": true,
+  "isFocusInFirstRow": true,
+  "isFocusInLastColumn": false,
+  "isFocusInLastRow": false,
+}
+`;
+
+exports[`grid functions should match snapshot passing index: 3,  1`] = `
+{
+  "isFocusInFirstColumn": false,
+  "isFocusInFirstRow": true,
+  "isFocusInLastColumn": false,
+  "isFocusInLastRow": false,
+}
+`;
+
+exports[`grid functions should match snapshot passing index: 13,  1`] = `
+{
+  "isFocusInFirstColumn": false,
+  "isFocusInFirstRow": false,
+  "isFocusInLastColumn": false,
+  "isFocusInLastRow": false,
+}
+`;
+
+exports[`grid functions should match snapshot passing index: 21,  1`] = `
+{
+  "isFocusInFirstColumn": false,
+  "isFocusInFirstRow": false,
+  "isFocusInLastColumn": false,
+  "isFocusInLastRow": true,
+}
+`;
+
+exports[`grid functions should match snapshot passing index: 24,  1`] = `
+{
+  "isFocusInFirstColumn": false,
+  "isFocusInFirstRow": false,
+  "isFocusInLastColumn": true,
+  "isFocusInLastRow": true,
+}
+`;

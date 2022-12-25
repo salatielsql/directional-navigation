@@ -5,16 +5,6 @@ import {
 
 import { GetGridFocusPositionsParams } from "./types";
 
-export function isElementHorizontallyVisible(
-  $el: HTMLElement,
-  $parent: HTMLElement
-) {
-  const element = $el.getBoundingClientRect();
-  const parent = $parent.getBoundingClientRect();
-
-  return element.left >= parent.left && element.right <= parent.right;
-}
-
 export function isGridAttrValid(attr: string | null) {
   if (!attr) return false;
 

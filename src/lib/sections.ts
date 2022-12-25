@@ -1,5 +1,4 @@
 import {
-  CHILDREN_INDEX_ATTR,
   LEAVE_SECTION_DIRECTION_ATTR,
   PARENT_SECTION_ATTR,
   SECTION_CURRENT_FOCUSED_CHILDREN_ATTR,
@@ -11,7 +10,7 @@ import {
 import { all, getParentSectionId, qs } from "./dom";
 import { handleFocusElement } from "./nagivation";
 import { Directions, SectionDirections } from "./types";
-import { getGridFocusPositions, isGridAttrValid } from "./utils";
+import { getGridFocusPositions, isGridAttrValid } from "./grid";
 
 export class ManagedDirectionalSection {
   sectionId: string;

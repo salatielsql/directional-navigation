@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card {
+    @apply inline-flex items-center justify-center mr-4 rounded-lg text-slate-900 font-semibold uppercase text-center h-48 w-56 outline-2 outline-offset-4;
+  }
+}

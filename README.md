@@ -1,6 +1,6 @@
 # Directional Navigation ⬆️➡️⬇️⬅️
 
-(WIP) Spatial navigation focused on directional sections built with Typescript
+(WIP) HTML first spatial navigation focused on directional sections built with Typescript
 
 ### Runing the demo
 

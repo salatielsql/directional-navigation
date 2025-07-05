@@ -1,8 +1,12 @@
 # Directional Navigation ⬆️➡️⬇️⬅️
 
-(WIP) HTML first spatial navigation focused on directional sections built with Typescript
+HTML first spatial navigation focused on directional sections built with Typescript
 
-### Runing the demo
+### Demo
+
+https://directional-navigation-demo.netlify.app
+
+### Runing the demo locally
 
 1. Clone the repo
 2. Run `npm install`

@@ -11,7 +11,7 @@
     "release": "npm run test && npm run build && release-it",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": ["spatial-navigation", "directional-navigation", "tv-navigation"],
   "author": "",
   "license": "ISC",
   "devDependencies": {

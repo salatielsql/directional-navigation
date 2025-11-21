@@ -12,6 +12,10 @@ HTML-first spatial navigation library focused on directional sections. Built wit
 - 📦 **Lightweight** - Zero dependencies, TypeScript built
 - 🎭 **Custom events** - Listen to navigation events
 
+## Demo
+
+Check out the live demo: https://directional-navigation-demo.netlify.app
+
 ## Installation
 
 ```bash
@@ -26,7 +30,7 @@ npm install directional-navigation
   <head>
     <script type="module">
       import DirectionalNavigation from 'directional-navigation'
-      
+
       window.addEventListener('DOMContentLoaded', DirectionalNavigation.init)
     </script>
   </head>
@@ -66,24 +70,24 @@ DirectionalNavigation.focus(element)
 
 ### Section Attributes
 
-| Attribute | Required | Description |
-|-----------|----------|-------------|
-| `data-section-id` | ✅ | Unique identifier for the section |
-| `data-section-direction` | ✅ | Navigation direction: `horizontal`, `vertical`, or `grid` |
-| `data-focused-children-index` | ❌ | Index of currently focused child (default: `0`) |
-| `data-leave-left` | ❌ | CSS selector for element to focus when leaving left |
-| `data-leave-right` | ❌ | CSS selector for element to focus when leaving right |
-| `data-leave-up` | ❌ | CSS selector for element to focus when leaving up |
-| `data-leave-down` | ❌ | CSS selector for element to focus when leaving down |
-| `data-grid-columns` | ✅ (grid only) | Number of columns in grid layout |
-| `data-grid-rows` | ✅ (grid only) | Number of rows in grid layout |
+| Attribute                     | Required       | Description                                               |
+| ----------------------------- | -------------- | --------------------------------------------------------- |
+| `data-section-id`             | ✅             | Unique identifier for the section                         |
+| `data-section-direction`      | ✅             | Navigation direction: `horizontal`, `vertical`, or `grid` |
+| `data-focused-children-index` | ❌             | Index of currently focused child (default: `0`)           |
+| `data-leave-left`             | ❌             | CSS selector for element to focus when leaving left       |
+| `data-leave-right`            | ❌             | CSS selector for element to focus when leaving right      |
+| `data-leave-up`               | ❌             | CSS selector for element to focus when leaving up         |
+| `data-leave-down`             | ❌             | CSS selector for element to focus when leaving down       |
+| `data-grid-columns`           | ✅ (grid only) | Number of columns in grid layout                          |
+| `data-grid-rows`              | ✅ (grid only) | Number of rows in grid layout                             |
 
 ### Child Element Attributes
 
-| Attribute | Required | Description |
-|-----------|----------|-------------|
-| `data-parent-section` | ✅ | Section ID this element belongs to |
-| `data-initial-focus` | ❌ | Focus this element on initialization |
+| Attribute             | Required | Description                          |
+| --------------------- | -------- | ------------------------------------ |
+| `data-parent-section` | ✅       | Section ID this element belongs to   |
+| `data-initial-focus`  | ❌       | Focus this element on initialization |
 
 ## Section Types
 
@@ -151,10 +155,10 @@ The library dispatches custom events you can listen to:
 Dispatched when an element receives focus.
 
 ```typescript
-window.addEventListener('dn:did-focus', (e) => {
+window.addEventListener('dn:did-focus', e => {
   const element = e.target as HTMLElement
   console.log('Focused:', element)
-  
+
   // Scroll element into view
   element.scrollIntoView({
     behavior: 'smooth',
@@ -198,17 +202,17 @@ window.addEventListener('dn:destroyed', () => {
         outline-offset: 4px;
         background-color: #dbeafe;
       }
-      
+
       [data-section-id]:focus {
         outline: 2px dashed #94a3b8;
       }
     </style>
     <script type="module">
       import DirectionalNavigation from 'directional-navigation'
-      
+
       window.addEventListener('DOMContentLoaded', DirectionalNavigation.init)
-      
-      window.addEventListener('dn:did-focus', (e) => {
+
+      window.addEventListener('dn:did-focus', e => {
         const $el = e.target
         $el.scrollIntoView({
           behavior: 'smooth',
@@ -228,7 +232,7 @@ window.addEventListener('dn:destroyed', () => {
       <div data-parent-section="navbar" data-initial-focus>Home</div>
       <div data-parent-section="navbar">Search</div>
     </aside>
-    
+
     <main id="main">
       <section
         data-section-id="horizontal-01"
@@ -250,9 +254,10 @@ window.addEventListener('dn:destroyed', () => {
 ### Running the Demo Locally
 
 1. Clone the repository
-2. Run `npm install`
-3. Run `npm run dev`
-4. Open `http://localhost:1234` in your browser
+2. Install [pnpm](https://pnpm.io/installation)
+3. Run `npm install`
+4. Run `npm run dev`
+5. Open `http://localhost:1234` in your browser
 
 ### Building
 
@@ -265,10 +270,6 @@ npm run build
 ```bash
 npm test
 ```
-
-## Demo
-
-Check out the live demo: https://directional-navigation-demo.netlify.app
 
 ## License
 
